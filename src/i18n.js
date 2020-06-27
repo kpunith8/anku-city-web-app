@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true, // Remove the debug inproduction
+    debug: process.env.NODE_ENV === "production" ? false : true, // Remove the debug in production
 
     lng: "kan",
     fallbackLng: "en",
