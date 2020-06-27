@@ -3,12 +3,13 @@ import { useTranslation } from "react-i18next";
 import { makeStyles } from "@material-ui/core/styles";
 import Jumbotron from "../gallery/jumbotron";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useGA from "../utils/use-ga";
 
 const useStyles = makeStyles((theme) => ({
   homeTitle: {
     display: "flex",
     justifyContent: "center",
-    fontSize: (media480) => (media480 ? 30 : 40),
+    fontSize: (media480) => (media480 ? 26 : 36),
     marginBottom: 10,
     backgroundImage:
       "linear-gradient(90deg, #e48a28 20%, #b59649 80%, #8a405a)",
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  useGA(window.location.pathname);
   const { t } = useTranslation();
   const media480 = useMediaQuery("(max-width:480px)");
 
