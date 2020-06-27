@@ -1,5 +1,34 @@
 {
-  "site-title": "Anku City",
-  "welcome-message": "Welcome to Anku City",
-  "about": "About Us"
+  "main": {
+    "site-title": "Anku City"
+  },
+  "home-page": {
+    "welcome-message": "Welcome to Anku City",
+    "name": "Name",
+    "member-position": "Grama Panchayat Member ",
+    "member-name": "Yogesg A.B"
+  },
+  "about-page": {
+    "about": "About our village"
+  },
+  "nav-links": {
+    "about": "About Us"
+  },
+  "images-caption": {
+    "full-view": "Village Full View",
+    "basava-temple": "Basavanagudi Temple",
+    "basava-temple-night": "Basavanagudi Temple during festival",
+    "friends": "Youth",
+    "basava-konda": "Village Festival",
+    "lake": "Pond",
+    "nature-view": "Full view of the hills"
+  },
+  "footer": {
+    "village-name": "Ankushanahalli",
+    "author-name": "Punith K",
+    "copyright": "Copyright"
+  },
+  "misc": {
+    "coming-soon": "More Info Coming soon"
+  }
 }

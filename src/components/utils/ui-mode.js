@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocalStorage } from "react-use";
 import IconButton from "@material-ui/core/IconButton";
-
 import { Brightness4, BrightnessHigh } from "@material-ui/icons";
 import { Tooltip, Zoom } from "@material-ui/core";
 

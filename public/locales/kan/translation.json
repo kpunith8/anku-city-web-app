@@ -1,5 +1,34 @@
 {
-  "site-title": "ಅಂಕು ಸಿಟಿ",
-  "welcome-message": "ಅಂಕು ಸಿಟಿಗೆ ಸುಸ್ವಾಗತ",
-  "about": "ನಮ್ಮೂರು"
+  "main": {
+    "site-title": "ಅಂಕು ಸಿಟಿ"
+  },
+  "home-page": {
+    "welcome-message": "ಅಂಕು ಸಿಟಿಗೆ ಸುಸ್ವಾಗತ",
+    "member-position": "ಗ್ರಾಮ ಪಂಚಾಯಿತಿ ಅಧ್ಯಕ್ಷರು",
+    "name": "ಹೆಸರು",
+    "member-name": "ಯೋಗೇಶ್ ಎ.ಬಿ"
+  },
+  "about-page": {
+    "about": "ನಮ್ಮೂರಿನ ಬಗ್ಗೆ"
+  },
+  "nav-links": {
+    "about": "ನಮ್ಮೂರು"
+  },
+  "images-caption": {
+    "full-view": "ಹಳ್ಳಿಯ ಪೂರ್ಣ ನೋಟ",
+    "basava-temple": "ಬಸವನಗುಡಿ",
+    "basava-temple-night": "ದೇವಸ್ಥಾನದ ರಾತ್ರಿಯ ವಿಹಂಗಮ ನೋಟ",
+    "friends": "ಗ್ರಾಮದ ಯುವಕರು",
+    "basava-konda": "ಬಸವನ ಕೊಂಡದ ಉತ್ಸವ",
+    "lake": "ಕೊಳ ",
+    "nature-view": "ಗುಡ್ಡದ ವಿಹಂಗಮ ನೋಟ"
+  },
+  "footer": {
+    "village-name": "ಅಂಕುಶನಹಳ್ಳಿ",
+    "author-name": "ಪುನೀತ್ ಕೆ",
+    "copyright": "ಹಕ್ಕುಸ್ವಾಮ್ಯ"
+  },
+  "misc": {
+    "coming-soon": "ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮ ಮುಂದೆ "
+  }
 }

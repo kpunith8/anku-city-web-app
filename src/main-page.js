@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { useLocalStorage } from "react-use";
 import NavBar from "./components/nav-bar/nav-bar";
 import { Switch, Route } from "react-router-dom";
+import Footer from "./components/utils/footer";
 
 const About = lazy(() => import("./components/about/about"));
 const Home = lazy(() => import("./components/home/home"));
@@ -30,7 +31,7 @@ const MainPage = () => {
         prefersDarkMode={selectedUIMode === "dark" ? true : false}
         setMode={setSelectedUIMode}
       />
-      <Container style={{marginTop: 80}}>
+      <Container style={{ marginTop: 80 }}>
         <Switch>
           <Route path="/about" exact>
             <About />
@@ -39,6 +40,8 @@ const MainPage = () => {
             <Home />
           </Route>
         </Switch>
+        <hr className="line-break" />
+        <Footer />
       </Container>
     </ThemeProvider>
   );

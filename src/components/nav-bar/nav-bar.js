@@ -12,17 +12,21 @@ import { useTranslation } from "react-i18next";
 import TranslateIcon from "@material-ui/icons/Translate";
 import UIMode from "../utils/ui-mode";
 import { Link } from "react-router-dom";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     position: "sticky",
+    zIndex: "10",
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
+    fontSize: (media480) => (media480 ? 26 : 34),
+    marginLeft: (media480) => (media480 ? -20 : 0),
   },
   langSwitch: {
     display: "flex",
@@ -48,7 +52,8 @@ const langMap = {
 };
 
 const NavBar = ({ prefersDarkMode, setMode }) => {
-  const classes = useStyles();
+  const media480 = useMediaQuery("(max-width:480px)");
+  const classes = useStyles(media480);
   const [anchorEl, setAnchorEl] = useState(null);
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("ಕನ್ನಡ");
@@ -79,18 +84,18 @@ const NavBar = ({ prefersDarkMode, setMode }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h4" className={classes.title}>
+          <div className={classes.title}>
             <Link to="/" className={classes.routeLink}>
-              {t("site-title")}
+              {t("main.site-title")}
             </Link>
-          </Typography>
+          </div>
 
           <div style={{ display: "flex", alignItems: "center" }}>
-            <p className={classes.linkText}>
+            <div className={classes.linkText}>
               <Link to="/about" className={classes.routeLink}>
-                {t("about")}
+                {t("nav-links.about")}
               </Link>
-            </p>
+            </div>
             <UIMode
               prefersDarkMode={prefersDarkMode}
               setMode={setMode}

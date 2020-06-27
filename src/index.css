@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.line-break {
+  background: linear-gradient(90deg, #e48a28 0, #b59649 50%, #8a405a);
+  height: 1.5px;
+  border: none;
+  margin: 1.5rem 0;
+}

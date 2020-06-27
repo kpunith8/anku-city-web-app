@@ -17,6 +17,8 @@
     "react-i18next": "^11.7.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-swipeable-views": "^0.13.9",
+    "react-swipeable-views-utils": "^0.13.9",
     "react-use": "^15.3.0",
     "uuidv4": "^6.1.1"
   },
