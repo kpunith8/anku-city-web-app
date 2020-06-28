@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import MobileStepper from "@material-ui/core/MobileStepper";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { useTranslation } from "react-i18next";
@@ -17,11 +18,15 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: (media480) => (media480 ? 500 : 1200),
+    maxWidth: (media480) => (media480 ? 450 : 1200),
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
     zIndex: "1",
+    margin: "auto",
+  },
+  carousel: {
+    borderRadius: 20,
   },
   jumbotronFooter: {
     display: "flex",
@@ -29,27 +34,39 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     height: 50,
     paddingLeft: theme.spacing(4),
-
     backgroundColor: theme.palette.background.default,
   },
   jumboText: {
     fontSize: (media480) => (media480 ? 18 : 25),
   },
   img: {
-    height: (media480) => (media480 ? 400 : 650),
+    height: (media480) => (media480 ? 300 : 430),
     display: "flex",
     flex: 1,
-    maxWidth: (media480) => (media480 ? 500 : 1200),
+    maxWidth: (media480) => (media480 ? 450 : 1200),
     overflow: "hidden",
     width: "100%",
     objectFit: "cover",
   },
+  stepper: {
+    position: "relative",
+    color: "blue",
+    width: "100%",
+    marginTop: -24,
+    flexGrow: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    "-webkit-text-fill-color": "transparent",
+    "-moz-text-fill-color": "transparent",
+    "-webkit-background-clip": "text",
+    "-moz-background-clip": "text",
+  },
 }));
 
-const Jumbotron = () => {
+const Carousel = () => {
   const media480 = useMediaQuery("(max-width:480px)");
   const { t } = useTranslation();
-  const tutorialSteps = [
+  const images = [
     {
       label: t("images-caption.full-view"),
       imgPath: fullView,
@@ -92,8 +109,11 @@ const Jumbotron = () => {
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
+        animateTransitions
+        interval={1500}
+        className={classes.carousel}
       >
-        {tutorialSteps.map((step, index) => (
+        {images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <img
@@ -105,13 +125,20 @@ const Jumbotron = () => {
           </div>
         ))}
       </AutoPlaySwipeableViews>
+      <MobileStepper
+        variant="dots"
+        steps={images.length}
+        onChange={handleStepChange}
+        activeStep={activeStep}
+        className={classes.stepper}
+      />
       <Paper square elevation={0} className={classes.jumbotronFooter}>
         <Typography className={classes.jumboText}>
-          {tutorialSteps[activeStep].label}
+          {images[activeStep].label}
         </Typography>
       </Paper>
     </div>
   );
 };
 
-export default Jumbotron;
+export default Carousel;

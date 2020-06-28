@@ -10,23 +10,24 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useTranslation } from "react-i18next";
 import TranslateIcon from "@material-ui/icons/Translate";
-import UIMode from "../utils/ui-mode";
 import { Link } from "react-router-dom";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import UIMode from "../utils/ui-mode";
+import Drawer from "../utils/drawer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     position: "sticky",
-    zIndex: "10",
+    zIndex: 10,
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
-    fontSize: (media480) => (media480 ? 26 : 34),
-    marginLeft: (media480) => (media480 ? -20 : 0),
+    fontSize: (media480) => (media480 ? 20 : 34),
+    marginLeft: (media480) => (media480 ? -10 : 0),
   },
   langSwitch: {
     display: "flex",
@@ -42,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   linkText: {
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: 600,
+    display: (media480) => media480 && "none",
   },
 }));
 
@@ -57,6 +60,7 @@ const NavBar = ({ prefersDarkMode, setMode }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("ಕನ್ನಡ");
+  const [toggleDrawer, setToggleDrawer] = useState(false);
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
@@ -72,18 +76,39 @@ const NavBar = ({ prefersDarkMode, setMode }) => {
     setAnchorEl(null);
   };
 
+  const handleToggleDrawer = (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setToggleDrawer(!toggleDrawer);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar color="inherit">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          {media480 && (
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={handleToggleDrawer}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+          {toggleDrawer && (
+            <Drawer
+              toggleDrawer={toggleDrawer}
+              handleToggleDrawer={handleToggleDrawer}
+            />
+          )}
           <div className={classes.title}>
             <Link to="/" className={classes.routeLink}>
               {t("main.site-title")}

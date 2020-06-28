@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "@material-ui/core/styles";
-import Jumbotron from "../gallery/jumbotron";
+import Carousel from "../gallery/carousel";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useGA from "../utils/use-ga";
 
@@ -47,7 +47,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <div className={classes.homeTitle}>{t("home-page.welcome-message")}</div>
-      <Jumbotron />
+      <Carousel />
       <hr className="line-break" />
       <div className={classes.memberTitle}>
         {t("home-page.member-position")}

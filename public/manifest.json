@@ -1,7 +1,23 @@
 {
-  "short_name": "Anku City",
-  "name": "Anku City Web App",
-  "icons": [],
+  "short_name": "ಅಂಕು ಸಿಟಿ",
+  "name": "ಅಂಕು ಸಿಟಿ",
+  "icons": [
+    {
+      "src": "/images/village.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/village.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/village/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

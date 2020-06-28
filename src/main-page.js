@@ -1,4 +1,4 @@
-import React, { useState, lazy } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Container } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -32,14 +32,16 @@ const MainPage = () => {
         setMode={setSelectedUIMode}
       />
       <Container style={{ marginTop: 80 }}>
-        <Switch>
-          <Route path="/about" exact>
-            <About />
-          </Route>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-        </Switch>
+        <Suspense fallback={<div />}>
+          <Switch>
+            <Route path="/about" exact>
+              <About />
+            </Route>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+          </Switch>
+        </Suspense>
         <hr className="line-break" />
         <Footer />
       </Container>
