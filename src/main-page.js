@@ -1,11 +1,12 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy } from "react";
 import { Container } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useLocalStorage } from "react-use";
 import NavBar from "./components/nav-bar/nav-bar";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import Footer from "./components/utils/footer";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const About = lazy(() => import("./components/about/about"));
 const Home = lazy(() => import("./components/home/home"));
@@ -13,6 +14,7 @@ const Home = lazy(() => import("./components/home/home"));
 const MainPage = () => {
   const [defaultUIMode] = useLocalStorage("anku-city-ui-mode", "dark");
   const [selectedUIMode, setSelectedUIMode] = useState(defaultUIMode);
+  const location = useLocation();
 
   const theme = React.useMemo(
     () =>
@@ -32,18 +34,23 @@ const MainPage = () => {
         setMode={setSelectedUIMode}
       />
       <Container style={{ marginTop: 80 }}>
-        <Suspense fallback={<div />}>
-          <Switch>
-            <Route path="/about" exact>
-              <About />
-            </Route>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-          </Switch>
-        </Suspense>
-        <hr className="line-break" />
-        <Footer />
+        <TransitionGroup className="transition-group">
+          <CSSTransition key={location.key} timeout={300} classNames="item">
+            <section className="route-section">
+              <Switch location={location}>
+                <Route path="/about" exact>
+                  <About />
+                </Route>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+              </Switch>
+
+              <hr className="line-break" />
+              <Footer />
+            </section>
+          </CSSTransition>
+        </TransitionGroup>
       </Container>
     </ThemeProvider>
   );
