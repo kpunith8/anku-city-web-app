@@ -8,6 +8,8 @@ import PlaceIcon from "@material-ui/icons/Place";
 import HomeIcon from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { uuid } from "uuidv4";
 
 const useStyles = makeStyles((theme) => ({
   routeLink: {
@@ -21,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 34,
   },
   list: {
-    width: 280
-  }
+    width: 280,
+  },
 }));
 
 const Drawer = ({ handleToggleDrawer, toggleDrawer }) => {
@@ -30,43 +32,47 @@ const Drawer = ({ handleToggleDrawer, toggleDrawer }) => {
   const { t } = useTranslation();
 
   return (
-    <SwipeableDrawer
-      anchor="left"
-      open={toggleDrawer}
-      onClose={handleToggleDrawer}
-      onOpen={handleToggleDrawer}
-      transitionDuration={{ enter: 500, exit: 1000 }}
-    >
-      <List className={classes.list}>
-        <ListItem
-          button
-          key={t("main.site-title")}
-          onClick={handleToggleDrawer}
+    <TransitionGroup>
+      <CSSTransition unmountOnExit key={uuid()} timeout={400}>
+        <SwipeableDrawer
+          anchor="left"
+          open={toggleDrawer}
+          onClose={handleToggleDrawer}
+          onOpen={handleToggleDrawer}
+          transitionDuration={{ enter: 400, exit: 400 }}
         >
-          <ListItemIcon>
-            <HomeIcon className={classes.drawerIcon} />
-          </ListItemIcon>
-          <Link to="/" className={classes.routeLink}>
-            {t("main.site-title")}
-          </Link>
-        </ListItem>
+          <List className={classes.list}>
+            <ListItem
+              button
+              key={t("main.site-title")}
+              onClick={handleToggleDrawer}
+            >
+              <ListItemIcon>
+                <HomeIcon className={classes.drawerIcon} />
+              </ListItemIcon>
+              <Link to="/" className={classes.routeLink}>
+                {t("main.site-title")}
+              </Link>
+            </ListItem>
 
-        <hr className="line-break" />
+            <hr className="line-break" />
 
-        <ListItem
-          button
-          key={t("nav-links.about")}
-          onClick={handleToggleDrawer}
-        >
-          <ListItemIcon>
-            <PlaceIcon className={classes.drawerIcon} />
-          </ListItemIcon>
-          <Link to="/about" className={classes.routeLink}>
-            {t("nav-links.about")}
-          </Link>
-        </ListItem>
-      </List>
-    </SwipeableDrawer>
+            <ListItem
+              button
+              key={t("nav-links.about")}
+              onClick={handleToggleDrawer}
+            >
+              <ListItemIcon>
+                <PlaceIcon className={classes.drawerIcon} />
+              </ListItemIcon>
+              <Link to="/about" className={classes.routeLink}>
+                {t("nav-links.about")}
+              </Link>
+            </ListItem>
+          </List>
+        </SwipeableDrawer>
+      </CSSTransition>
+    </TransitionGroup>
   );
 };
 

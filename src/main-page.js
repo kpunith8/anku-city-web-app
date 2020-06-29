@@ -35,7 +35,7 @@ const MainPage = () => {
       />
       <Container style={{ marginTop: 80 }}>
         <TransitionGroup className="transition-group">
-          <CSSTransition key={location.key} timeout={300} classNames="item">
+          <CSSTransition key={location.key} timeout={350} classNames="item">
             <section className="route-section">
               <Switch location={location}>
                 <Route path="/about" exact>
@@ -47,6 +47,7 @@ const MainPage = () => {
               </Switch>
 
               <hr className="line-break" />
+
               <Footer />
             </section>
           </CSSTransition>
