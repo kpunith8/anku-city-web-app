@@ -41,11 +41,11 @@ const MainPage = () => {
           <CSSTransition key={location.key} timeout={350} classNames="item">
             <section className="route-section">
               <Switch location={location}>
-                <Route path="/about" exact>
-                  <About />
-                </Route>
                 <Route path="/" exact>
                   <Home />
+                </Route>
+                <Route path="/about">
+                  <About />
                 </Route>
               </Switch>
 

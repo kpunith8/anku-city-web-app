@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   aboutTitle: {
     display: "flex",
     justifyContent: "center",
-    fontSize: (media480) => (media480 ? 24 : 32),
+    fontSize: (media480) => (media480 ? 22 : 32),
     marginBottom: 10,
     backgroundImage:
       "linear-gradient(90deg, #e48a28 20%, #b59649 80%, #8a405a)",

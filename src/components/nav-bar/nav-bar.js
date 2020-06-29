@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useTranslation } from "react-i18next";
+import { usePrevious } from "react-use";
 import TranslateIcon from "@material-ui/icons/Translate";
 import { Link } from "react-router-dom";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   langButton: {
     color: "inherit",
     marginLeft: 5,
+    fontSize: 15,
   },
   routeLink: {
     color: "inherit",
@@ -54,8 +56,9 @@ const NavBar = ({ prefersDarkMode, setMode }) => {
   const classes = useStyles(media480);
   const [anchorEl, setAnchorEl] = useState(null);
   const { t, i18n } = useTranslation();
-  const [lang, setLang] = useState("ಕನ್ನಡ");
+  const [lang, setLang] = useState("English");
   const open = Boolean(anchorEl);
+  const prevLang = usePrevious(lang);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -97,9 +100,11 @@ const NavBar = ({ prefersDarkMode, setMode }) => {
                 color="inherit"
                 disableRipple
               >
-                <TranslateIcon />
-                <Typography className={classes.langButton}>{lang}</Typography>
-                <ExpandMoreIcon />
+                <TranslateIcon style={{ fontSize: 16 }} />
+                <Typography className={classes.langButton}>
+                  {prevLang}
+                </Typography>
+                <ExpandMoreIcon style={{ fontSize: 20 }} />
               </IconButton>
             </div>
 
@@ -118,8 +123,8 @@ const NavBar = ({ prefersDarkMode, setMode }) => {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>ಕನ್ನಡ</MenuItem>
               <MenuItem onClick={handleClose}>English</MenuItem>
+              <MenuItem onClick={handleClose}>ಕನ್ನಡ</MenuItem>
             </Menu>
           </div>
         </Toolbar>

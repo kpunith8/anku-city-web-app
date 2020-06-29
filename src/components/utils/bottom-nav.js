@@ -14,14 +14,15 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     position: "fixed",
     borderTop: "1px solid rgba(0,0,0, 0.5)",
-    height: 75,
+    height: 60,
   },
   navTitle: {
-    fontSize: 17,
+    fontSize: 15,
+    fontWeight: 500,
     color: "#e65c07",
   },
   navIcon: {
-    fontSize: 32,
+    fontSize: 26,
   },
 }));
 
