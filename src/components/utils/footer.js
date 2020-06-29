@@ -22,7 +22,7 @@ const Footer = () => {
         className={classes.contact}
         style={{ color: "black", marginTop: -10 }}
       >
-        <div style={{ display: "flex", marginTop: 0, marginBottom: 30 }}>
+        <div style={{ display: "flex", marginTop: 0, marginBottom: 70 }}>
           <Typography color="textSecondary">
             {t("footer.copyright")} &copy; {new Date().getFullYear()}{" "}
             {t("footer.author-name")}, {t("footer.village-name")}
