@@ -110,7 +110,7 @@ const Carousel = () => {
         onChangeIndex={handleStepChange}
         enableMouseEvents
         animateTransitions
-        interval={1500}
+        interval={3000}
         className={classes.carousel}
       >
         {images.map((step, index) => (
