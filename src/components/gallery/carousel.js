@@ -117,6 +117,7 @@ const Carousel = () => {
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <img
+                loading="lazy"
                 className={classes.img}
                 src={step.imgPath}
                 alt={step.label}
