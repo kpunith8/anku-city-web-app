@@ -47,10 +47,6 @@ const Home = () => {
       <div className={classes.homeTitle}>{t("home-page.welcome-message")}</div>
       <Carousel />
       <hr className="line-break" />
-      <div className={classes.memberTitle}>
-        {t("home-page.member-position")}
-      </div>
-      <div className={classes.memberName}>{t("home-page.member-name")}</div>
       <div className={classes.soon}>{t("misc.coming-soon")}</div>
     </div>
   );
