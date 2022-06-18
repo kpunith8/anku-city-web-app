@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { makeStyles } from "@material-ui/core/styles";
 import Carousel from "../gallery/carousel";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import useGA from "../utils/use-ga";
 
 const useStyles = makeStyles((theme) => ({
   homeTitle: {
@@ -38,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
-  useGA(window.location.pathname);
   const { t } = useTranslation();
   const media480 = useMediaQuery("(max-width:480px)");
 

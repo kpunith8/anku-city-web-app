@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "@material-ui/core/styles";
-import useGA from "../utils/use-ga";
 
 const useStyles = makeStyles((theme) => ({
   aboutTitle: {
@@ -19,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const About = () => {
-  useGA(window.location.pathname);
   const { t } = useTranslation();
   const classes = useStyles();
 
